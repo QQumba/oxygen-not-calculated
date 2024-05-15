@@ -97,7 +97,7 @@ export const Plants: Plant[] = [
 ];
 
 export function getPlantCount(
-  foodId: foodId,
+  foodId: string,
   kcalPerCycle: number
 ): [Plant, number] | null {
   const food = Foods.find((x) => x.id == foodId)!;

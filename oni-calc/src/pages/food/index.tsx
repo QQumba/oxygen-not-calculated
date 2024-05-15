@@ -1,13 +1,31 @@
-import { Plant, foodId, getPlantCount } from '@/data/food-data';
 import FoodList from './food-list';
 import FoodSettings from './food-settings';
 import { useState } from 'react';
+import { Item, ItemPile, Items, createFoodPile } from '@/data/items';
+import { getPlantCount } from '@/data/recipes';
+import { Tree } from '@/data/production-tree';
+import TreeView from './tree-view';
 
 export default function Food() {
-  const [duplicants, setDuplicants] = useState(0);
-  const [selectedFood, setSelectedFood] = useState<foodId | null>(null);
+  const [duplicants, setDuplicants] = useState(12);
+  const [selectedFood, setSelectedFood] = useState<string | null>(null);
 
-  const [plantData, setPlantData] = useState<[Plant, number]>();
+  const [plantData, setPlantData] = useState<[Item, number]>();
+
+  function drawTree(): Tree | null {
+    if (selectedFood == null) {
+      return null;
+    }
+
+    const pile = createFoodPile(selectedFood, duplicants * 1000);
+    if (pile == null) {
+      return null;
+    }
+
+    const tree = new Tree(pile);
+    tree.print();
+    return tree;
+  }
 
   return (
     <div>
@@ -40,10 +58,16 @@ export default function Food() {
           </div>
         )}
       </div>
+      <div>
+        <button className="border rounded p-2" onClick={drawTree}>
+          Print tree
+        </button>
+      </div>
       <FoodList
         selectedFood={selectedFood}
         setSelectedFood={setSelectedFood}
       ></FoodList>
+      <TreeView drawTree={drawTree}></TreeView>
     </div>
   );
 }

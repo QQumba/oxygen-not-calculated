@@ -1,4 +1,6 @@
-type Unit = 'kg' | 'count' | 'kcal';
+import { ItemPile } from './items';
+
+export type Unit = 'kg' | 'count' | 'kcal';
 
 type GrowthRecipe = {
   plantId: string;

@@ -1,46 +1,132 @@
-type Item = {
+import { Unit } from './misc';
+
+type ItemType = 'food';
+
+export type Item = {
   id: string;
   name: string;
-  unitConversionMap?: [Unit, number][];
+  unitConversionMap?: Map<Unit, number>;
+  type?: ItemType;
 };
 
-type ItemPile = {
+export type ItemPile = {
   itemId: string;
   amount: number;
   amountUnit: Unit;
 };
 
-const Items: Item[] = [
+export function createFoodPile(itemId: string, kcal: number): ItemPile | null {
+  const item = Items.find((x) => x.id == itemId && x.type == 'food');
+  if (item == null) {
+    return null;
+  }
+
+  const kcalPerItem = item.unitConversionMap?.get('kcal')!;
+  const pile: ItemPile = {
+    itemId: itemId,
+    amount: +(kcal / kcalPerItem).toFixed(2),
+    amountUnit: 'kg',
+  };
+
+  return pile;
+}
+
+export const Items: Item[] = [
   // food
   {
     id: 'frost_burger',
     name: 'Frost Burger',
-    unitConversionMap: [['kcal', 6000]],
+    unitConversionMap: new Map([['kcal', 6000]]),
+    type: 'food',
   },
   {
     id: 'frost_bun',
     name: 'Frost Bun',
-    unitConversionMap: [['kcal', 1200]],
+    unitConversionMap: new Map([['kcal', 1200]]),
+    type: 'food',
   },
   {
     id: 'lettuce',
     name: 'Lettuce',
-    unitConversionMap: [['kcal', 400]],
+    unitConversionMap: new Map([['kcal', 400]]),
+    type: 'food',
   },
   {
     id: 'barbeque',
     name: 'Barbeque',
-    unitConversionMap: [['kcal', 4000]],
+    unitConversionMap: new Map([['kcal', 4000]]),
+    type: 'food',
   },
   {
     id: 'meat',
     name: 'Meat',
-    unitConversionMap: [['kcal', 1600]],
+    unitConversionMap: new Map([['kcal', 1600]]),
+    type: 'food',
+  },
+  {
+    id: 'berry_sludge',
+    name: 'Berry Sludge',
+    unitConversionMap: new Map([['kcal', 4000]]),
+    type: 'food',
+  },
+  {
+    id: 'bog_jelly',
+    name: 'Bog Jelly',
+    unitConversionMap: new Map([['kcal', 1840]]),
+    type: 'food',
+  },
+  {
+    id: 'bristle_berry',
+    name: 'Bristle Berry',
+    unitConversionMap: new Map([['kcal', 1600]]),
+    type: 'food',
+  },
+  {
+    id: 'cooked_seafood',
+    name: 'Cooked Seafood',
+    unitConversionMap: new Map([['kcal', 1600]]),
+    type: 'food',
+  },
+  {
+    id: 'curried_beans',
+    name: 'Curried Beans',
+    unitConversionMap: new Map([['kcal', 5000]]),
+    type: 'food',
+  },
+  {
+    id: 'meal_lice',
+    name: 'Meal Lice',
+    unitConversionMap: new Map([['kcal', 600]]),
+    type: 'food',
+  },
+  {
+    id: 'spicy_tofu',
+    name: 'Spicy Tofu',
+    unitConversionMap: new Map([['kcal', 4000 ]]),
+    type: 'food',
+  },
+  {
+    id: 'tofu',
+    name: 'Tofu',
+    unitConversionMap: new Map([['kcal', 3600  ]]),
+    type: 'food',
   },
   // items
   {
     id: 'sleet_wheat_grain',
     name: 'Sleet Wheat Grain',
+  },
+  {
+    id: 'nosh_bean',
+    name: 'Nosh Bean',
+  },
+  {
+    id: 'pincha_peppernut',
+    name: 'Pincha Peppernut',
+  },
+  {
+    id: 'water',
+    name: 'Water',
   },
   // stations
   {
@@ -59,5 +145,17 @@ const Items: Item[] = [
   {
     id: 'sleet_wheat',
     name: 'Sleet Wheat',
+  },
+  {
+    id: 'waterweed',
+    name: 'Waterweed',
+  },
+  {
+    id: 'nosh_sprout',
+    name: 'Nosh Sprout',
+  },
+  {
+    id: 'pincha_pepperplant',
+    name: 'Pincha Pepperplant',
   },
 ];

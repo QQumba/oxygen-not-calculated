@@ -1,18 +1,17 @@
+import { Items } from '@/data/items';
+
 /* eslint-disable @next/next/no-img-element */
-
-import { Food, Foods, foodId } from '@/data/food-data';
-
 export default function FoodList({
   selectedFood,
   setSelectedFood,
 }: {
-  selectedFood: foodId | null;
-  setSelectedFood: (id: foodId) => void;
+  selectedFood: string | null;
+  setSelectedFood: (id: string) => void;
 }) {
-  const food = Foods;
+  const food = Items.filter((x) => x.type == 'food');
 
-  function isSelected(food: Food): boolean {
-    return selectedFood == food.id;
+  function isSelected(foodId: string): boolean {
+    return selectedFood == foodId;
   }
 
   return (
@@ -20,7 +19,7 @@ export default function FoodList({
       {food.map((f) => (
         <div
           className={`shadow border rounded p-2 cursor-pointer hover:bg-slate-300 ${
-            isSelected(f) ? 'bg-slate-300' : 'bg-slate-100'
+            isSelected(f.id) ? 'bg-slate-300' : 'bg-slate-100'
           }`}
           key={f.name}
           onClick={() => {
@@ -31,7 +30,7 @@ export default function FoodList({
             <div className="h-16 flex justify-center">
               <img
                 className="m-auto max-h-16 max-w-16"
-                src={`/images/${f.name}.png`}
+                src={`/images/${f.id}.png`}
                 alt={f.name}
               ></img>
             </div>
