@@ -35,23 +35,6 @@ export default function Food() {
         setDuplicants={setDuplicants}
       ></FoodSettings>
       <div className="mt-4">
-        <button
-          className="border rounded p-2"
-          onClick={() => {
-            if (selectedFood == null) {
-              return;
-            }
-
-            const data = getPlantCount(selectedFood, duplicants * 1000);
-            if (data == null) {
-              return;
-            }
-
-            setPlantData(data);
-          }}
-        >
-          Calculate
-        </button>
         {plantData && (
           <div>
             Plant: {plantData[0].name}, Count: {plantData[1]}

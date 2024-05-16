@@ -15,10 +15,10 @@ export default function FoodList({
   }
 
   return (
-    <div className="mt-4 flex flex-wrap space-x-2">
+    <div className="mt-4 flex flex-wrap">
       {food.map((f) => (
         <div
-          className={`shadow border rounded p-2 cursor-pointer hover:bg-slate-300 ${
+          className={`shadow border rounded p-2 cursor-pointer m-1 hover:bg-slate-300 ${
             isSelected(f.id) ? 'bg-slate-300' : 'bg-slate-100'
           }`}
           key={f.name}
