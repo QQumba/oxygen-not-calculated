@@ -38,7 +38,7 @@ export function getPlantCount(
     growthRecipe.growthTime!;
   const plantCount = kcalPerCycle / plantYieldPerCycle;
 
-  return [plant, +plantCount.toFixed(2)];
+  return [plant, +plantCount.toFixed(3)];
 }
 
 export function calculatePlantCount(
@@ -49,7 +49,7 @@ export function calculatePlantCount(
 
   const plantYieldPerCycle =
     recipe.producedItems.find((x) => x.itemId)!.amount / recipe.growthTime!;
-  const plantCount = pile.amount / plantYieldPerCycle;
+  const plantCount = +(pile.amount / plantYieldPerCycle).toFixed(3);
 
   const plantPile: ItemPile = {
     itemId: plant.id,
@@ -172,6 +172,34 @@ const Recipes: Recipe[] = [
       },
     ],
   },
+  {
+    producerId: 'ethanol_distiller',
+    type: 'production',
+    consumedItems: [
+      {
+        itemId: 'lumber',
+        amount: 1,
+        amountUnit: 'kg',
+      },
+    ],
+    producedItems: [
+      {
+        itemId: 'ethanol',
+        amount: 1 / 2,
+        amountUnit: 'kg',
+      },
+      {
+        itemId: 'polluted_dirt',
+        amount: 1 / 3,
+        amountUnit: 'kg',
+      },
+      {
+        itemId: 'carbon_dioxide',
+        amount: 5 / 3,
+        amountUnit: 'kg',
+      },
+    ],
+  },
   // growth recipes
   {
     producerId: 'mealwood',
@@ -189,6 +217,18 @@ const Recipes: Recipe[] = [
   {
     producerId: 'sleet_wheat',
     type: 'growth',
+    consumedItems: [
+      {
+        itemId: 'water',
+        amount: 20,
+        amountUnit: 'kg',
+      },
+      {
+        itemId: 'dirt',
+        amount: 5,
+        amountUnit: 'kg',
+      },
+    ],
     producedItems: [
       {
         itemId: 'sleet_wheat_grain',
@@ -196,7 +236,6 @@ const Recipes: Recipe[] = [
         amountUnit: 'count',
       },
     ],
-    consumedItems: [],
     growthTime: 18,
   },
   {
@@ -222,7 +261,18 @@ const Recipes: Recipe[] = [
         amountUnit: 'count',
       },
     ],
-    consumedItems: [],
+    consumedItems: [
+      {
+        itemId: 'polluted_water',
+        amount: 35,
+        amountUnit: 'kg',
+      },
+      {
+        itemId: 'phosphorite',
+        amount: 1,
+        amountUnit: 'kg',
+      },
+    ],
     growthTime: 8,
   },
   {
@@ -235,7 +285,42 @@ const Recipes: Recipe[] = [
         amountUnit: 'count',
       },
     ],
-    consumedItems: [],
+    consumedItems: [
+      {
+        itemId: 'ethanol',
+        amount: 20,
+        amountUnit: 'kg',
+      },
+      {
+        itemId: 'dirt',
+        amount: 5,
+        amountUnit: 'kg',
+      },
+    ],
     growthTime: 21,
+  },
+  {
+    producerId: 'arbor_tree',
+    type: 'growth',
+    producedItems: [
+      {
+        itemId: 'lumber',
+        amount: 5 * 300,
+        amountUnit: 'kg',
+      },
+    ],
+    consumedItems: [
+      {
+        itemId: 'polluted_water',
+        amount: 70,
+        amountUnit: 'kg',
+      },
+      {
+        itemId: 'dirt',
+        amount: 10,
+        amountUnit: 'kg',
+      },
+    ],
+    growthTime: 4.5,
   },
 ];

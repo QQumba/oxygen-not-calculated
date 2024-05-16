@@ -14,6 +14,8 @@ export class Tree {
   }
 
   processNode(node: TreeNode<ItemPile>) {
+    console.log('processing ' + node.value.itemId);
+
     const recipe = findRecipe(node.value.itemId);
 
     if (recipe == null) {
@@ -26,9 +28,15 @@ export class Tree {
     }
 
     node.children = recipe.consumedItems.map((x) => {
+      const producedItemPile = recipe.producedItems.find(
+        (x) => x.itemId == node.value.itemId
+      );
       const consumedItemPile = { ...x };
+      const amount =
+        (consumedItemPile.amount / producedItemPile!.amount) *
+        node.value.amount;
+      consumedItemPile.amount = amount;
 
-      consumedItemPile.amount *= node.value.amount;
       return new TreeNode(consumedItemPile);
     });
     node.children.forEach((x) => this.processNode(x));
@@ -41,9 +49,16 @@ export class Tree {
     }
 
     const leaf = new TreeNode(pile);
-    leaf.children = recipe.consumedItems.map((x) => new TreeNode(x));
+    leaf.children = recipe.consumedItems.map((x) => {
+      const consumedItemPile = { ...x };
+      const amount = consumedItemPile.amount * pile.amount;
+      consumedItemPile.amount = +amount.toFixed(2);
+
+      return new TreeNode(consumedItemPile);
+    });
 
     node.children = [leaf];
+    leaf.children.forEach((x) => this.processNode(x));
   }
 
   public print() {

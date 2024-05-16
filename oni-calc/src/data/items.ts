@@ -128,6 +128,34 @@ export const Items: Item[] = [
     id: 'water',
     name: 'Water',
   },
+  {
+    id: 'polluted_water',
+    name: 'Polluted Water',
+  },
+  {
+    id: 'ethanol',
+    name: 'Ethanol',
+  },
+  {
+    id: 'dirt',
+    name: 'Dirt',
+  },
+  {
+    id: 'polluted_dirt',
+    name: 'Polluted Dirt',
+  },
+  {
+    id: 'lumber',
+    name: 'Lumber'
+  },
+  {
+    id: 'phosphorite',
+    name: 'Phosphorite',
+  },
+  {
+    id: 'carbon_dioxide',
+    name: 'Carbon Dioxide',
+  },
   // stations
   {
     id: 'gas_range',
@@ -136,6 +164,10 @@ export const Items: Item[] = [
   {
     id: 'electric_grill',
     name: 'Electric Grill',
+  },
+  {
+    id: 'ethanol_distiller',
+    name: 'Ethanol Distiller',
   },
   // plants
   {
@@ -157,5 +189,9 @@ export const Items: Item[] = [
   {
     id: 'pincha_pepperplant',
     name: 'Pincha Pepperplant',
+  },
+  {
+    id: 'arbor_tree',
+    name: 'Arbor Tree',
   },
 ];

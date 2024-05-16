@@ -1,8 +1,7 @@
 import FoodList from './food-list';
 import FoodSettings from './food-settings';
 import { useState } from 'react';
-import { Item, ItemPile, Items, createFoodPile } from '@/data/items';
-import { getPlantCount } from '@/data/recipes';
+import { Item, createFoodPile } from '@/data/items';
 import { Tree } from '@/data/production-tree';
 import TreeView from './tree-view';
 
@@ -23,7 +22,7 @@ export default function Food() {
     }
 
     const tree = new Tree(pile);
-    tree.print();
+    // tree.print();
     return tree;
   }
 

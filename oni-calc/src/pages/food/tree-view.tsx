@@ -11,15 +11,17 @@ export default function TreeView({
   const root = tree?.rootItem;
 
   return (
-    <div className="flex flex-col items-center p-4">
-      {root && (
-        <TreeCard
-          node={root}
-          siblingsCount={1}
-          index={0}
-          isRootNode={true}
-        ></TreeCard>
-      )}
+    <div className='flex justify-center'>
+      <div className="flex flex-col items-center p-4 bg-slate-50 m-4">
+        {root && (
+          <TreeCard
+            node={root}
+            siblingsCount={1}
+            index={0}
+            isRootNode={true}
+          ></TreeCard>
+        )}
+      </div>
     </div>
   );
 }
@@ -56,7 +58,7 @@ function TreeCard({
   }
 
   return (
-    <div className="flex flex-col items-center flex-grow w-3/4 relative">
+    <div className="flex flex-col items-center flex-grow relative">
       {isLeftSubtree() && (
         <div className="border border-gray-300 w-1/2 absolute left-1/2"></div>
       )}
