@@ -241,6 +241,13 @@ const Recipes: Recipe[] = [
   {
     producerId: 'waterweed',
     type: 'growth',
+    consumedItems: [
+      {
+        itemId: 'bleach_stone',
+        amount: 1 / 2,
+        amountUnit: 'kg',
+      },
+    ],
     producedItems: [
       {
         itemId: 'lettuce',
@@ -248,7 +255,6 @@ const Recipes: Recipe[] = [
         amountUnit: 'count',
       },
     ],
-    consumedItems: [],
     growthTime: 12,
   },
   {

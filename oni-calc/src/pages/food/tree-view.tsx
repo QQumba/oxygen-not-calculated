@@ -11,7 +11,7 @@ export default function TreeView({
   const root = tree?.rootItem;
 
   return (
-    <div className='flex justify-center'>
+    <div className="flex justify-center">
       <div className="flex flex-col items-center p-4 bg-slate-50 m-4">
         {root && (
           <TreeCard
@@ -60,27 +60,29 @@ function TreeCard({
   return (
     <div className="flex flex-col items-center flex-grow relative">
       {isLeftSubtree() && (
-        <div className="border border-gray-300 w-1/2 absolute left-1/2"></div>
+        <div className="border border-oni-purple w-1/2 absolute left-1/2"></div>
       )}
       {isRightSubtree() && (
-        <div className="border border-gray-300 w-1/2 absolute right-1/2"></div>
+        <div className="border border-oni-purple w-1/2 absolute right-1/2"></div>
       )}
-      {!isRootNode && <div className="border border-gray-300 h-4"></div>}
-      <div className="shadow border rounded p-4 w-24 flex flex-col">
-        <div className="h-16 flex justify-center">
-          <img
-            className="m-auto max-h-16 max-w-16"
-            src={`/images/${node.value.itemId}.png`}
-            alt={node.value.itemId}
-          ></img>
-        </div>
-        <div className="h-10 max-w-16 flex justify-center">
-          <div className="text-gray-500 text-sm text-center m-auto">
-            {node.value.amount} {node.value.amountUnit}
+      {!isRootNode && <div className="border border-oni-purple h-4"></div>}
+      <div className='px-4'>
+        <div className="shadow border rounded p-4 w-24 flex flex-col">
+          <div className="h-16 flex justify-center">
+            <img
+              className="m-auto max-h-16 max-w-16"
+              src={`/images/${node.value.itemId}.png`}
+              alt={node.value.itemId}
+            ></img>
+          </div>
+          <div className="h-10 max-w-16 flex justify-center">
+            <div className="text-gray-500 text-sm text-center m-auto">
+              {node.value.amount} {node.value.amountUnit}
+            </div>
           </div>
         </div>
       </div>
-      {hasChildren() && <div className="border border-gray-300 h-4"></div>}
+      {hasChildren() && <div className="border border-oni-purple h-4"></div>}
       <div className="flex w-full">
         {node.children.map((x, i) => (
           <TreeCard

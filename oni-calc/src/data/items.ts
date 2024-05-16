@@ -156,6 +156,10 @@ export const Items: Item[] = [
     id: 'carbon_dioxide',
     name: 'Carbon Dioxide',
   },
+  {
+    id: 'bleach_stone',
+    name: 'Bleach Stone',
+  },
   // stations
   {
     id: 'gas_range',
