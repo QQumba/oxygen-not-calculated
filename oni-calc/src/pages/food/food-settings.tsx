@@ -15,7 +15,7 @@ export default function FoodSettings({
   return (
     <>
       <h1>Settings</h1>
-      <div className="flex space-x-4">
+      <div className="flex flex-col mx-1 space-y-2">
         <div className="border p-4 rounded">
           Duplicants:{' '}
           <input

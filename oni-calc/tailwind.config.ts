@@ -16,6 +16,7 @@ const config: Config = {
       colors: {
         oni: {
           purple: '#9c5679',
+          gray: '#4a4c5e',
         },
       },
     },

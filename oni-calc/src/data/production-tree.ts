@@ -1,7 +1,7 @@
 import { ItemPile } from './items';
 import { Recipe, calculatePlantCount, findRecipe } from './recipes';
 
-export class Tree {
+export class ProductionTree {
   rootItem?: TreeNode<ItemPile>;
 
   constructor(item: ItemPile) {
